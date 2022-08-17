@@ -42,3 +42,9 @@ class Order(HashModel):
 
     class Meta:
         database = redis2
+
+
+@app.get('/orders/{pk}')
+def get(pk: str):
+    return Order.get(pk)
+
