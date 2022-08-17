@@ -51,6 +51,7 @@ def format(pk: str):
         'quantity': product.quantity
     }
 
+
 @app.post('/products')
 def create(product: Product):
     return product.save()
