@@ -34,3 +34,8 @@ class Product(HashModel):
 
     class Meta:
         database = redis
+
+
+@app.get('/products')
+def all():
+    return [format(pk) for pk in Product.all_pks()]
