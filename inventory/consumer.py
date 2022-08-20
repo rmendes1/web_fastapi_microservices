@@ -3,7 +3,7 @@ import time
 from main import redis, Product
 
 key = 'order_completed'
-group = 'inventory_group'
+group = 'inventory-group'
 
 try:
     redis.xgroup_create(key, group)
@@ -17,12 +17,13 @@ while True:
         if results:
             for result in results:
                 obj = result[1][0][1]
-                product = Product.get(obj['product_id'])
-                if product:
-                    print(product)
+
+                try:
+                    product = Product.get(obj['product_id'])
                     product.quantity = product.quantity - int(obj['quantity'])
                     product.save()
-                else:
+
+                except:  # if the product is not available, it will be sent an event to refund
                     redis.xadd('refund_order', obj, '*')
     except Exception as e:
         print(str(e))

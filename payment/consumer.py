@@ -2,7 +2,7 @@ import time
 from main import redis, Order
 
 key = 'refund_order'
-group = 'payment_group'
+group = 'payment-group'
 
 try:
     redis.xgroup_create(key, group)
@@ -14,6 +14,7 @@ while True:
         results = redis.xreadgroup(group, key, {key: '>'}, None)  # the dict symbol is to get all the events
 
         if results:
+            print(results)
             for result in results:
                 obj = result[1][0][1]
                 order = Order.get(obj['pk'])
