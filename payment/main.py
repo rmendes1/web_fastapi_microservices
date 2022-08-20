@@ -25,7 +25,7 @@ app.add_middleware(
     allow_headers=['*']
 )
 
-redis2 = get_redis_connection(host=REDIS_HOST,
+redis = get_redis_connection(host=REDIS_HOST,
                               port=REDIS_PORT,
                               password=REDIS_PASSWORD,
                               decode_responses=REDIS_DECODE_RESPONSES
@@ -41,7 +41,25 @@ class Order(HashModel):
     status: str  # pending, completed, refunded
 
     class Meta:
-        database = redis2
+        database = redis
+
+
+@app.get('/orders')
+def all():
+    return [format(pk) for pk in Order.all_pks()]
+
+
+def format(pk: str):
+    order = Order.get(pk)
+
+    return {
+        'pk': order.pk,
+        'product_id': order.product_id,
+        'price': order.price,
+        'fee': order.fee,
+        'quantity': order.quantity,
+        'status': order.status
+    }
 
 
 @app.get('/orders/{pk}')
@@ -76,3 +94,9 @@ def order_completed(order: Order):
     time.sleep(5)
     order.status = 'completed'
     order.save()
+    redis.xadd('order_completed', order.dict(), '*')  # * = id parameter of current event, auto generated
+
+
+@app.delete('/orders/{pk}')
+def delete(pk: str):
+    return Order.delete(pk)
