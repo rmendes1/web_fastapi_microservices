@@ -33,3 +33,38 @@ A Bootstrap template was used. This template can be found at https://getbootstra
 <h1 align="center"> 
 <img src="diagram.png">
 </h1>
+
+# **Pages**
+
+## Home Page
+Firstly, the user can have access to the page through its index, which contains the list of products with their prices and quantity on stock.
+It is possible to delete a product from the list.
+
+<p align = "center" > Figure 2 - Index Page</p>
+<h1 align="center">    
+    <img src="homepage.png" />
+</h1>
+
+## Add a new product (/create)
+
+The user is able to click in the "Add" button in the homepage and submit a new product through the form in figure 3.
+
+<p align = "center" > Figure 3 - Add Product Form</p>
+<h1 align="center">    
+    <img src="add_form.png" />
+</h1>
+
+## Add a new order (/orders)
+It is possible to create a new order through the form in figure 4. In order to submit, the user must have the product id.
+
+<p align = "center" > Figure 4 - Login Form</p>
+<h1 align="center">
+    <img src="order_form.png" />
+</h1>
+
+As the user inserts the product id, the price is informed before the user specifies the quantity of products to get.
+
+<p align = "center" > Figure 5 - Filling the Form</p>
+<h1 align="center">
+    <img src="filling_order_form.png" />
+</h1>
