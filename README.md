@@ -3,13 +3,13 @@
 </h4>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/rmendes1/fastapi_microservices?color=%2304D361">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/rmendes1/web_fastapi_microservices?color=%2304D361">
 
- <img alt="Repository size" src="https://img.shields.io/github/repo-size/rmendes1/fastapi_microservices">
+ <img alt="Repository size" src="https://img.shields.io/github/repo-size/rmendes1/web_fastapi_microservices">
 	
   
-  <a href="https://github.com/rmendes1/house-rocket/commits/main">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/rmendes1/fastapi_microservices">
+  <a href="https://github.com/rmendes1/web_fast_api_microservices/commits/main">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/rmendes1/web_fastapi_microservices">
   </a>
   
 
